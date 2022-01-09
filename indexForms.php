@@ -12,7 +12,7 @@
                         <input type="text" name="imie" placeholder="Firstname..."/><br/>
                         <input type="text" name="nazwisko" placeholder="Lastname..."/><br/>
                         <input type="hidden" name="ilosc1Info" value = "'.$ilosc.'"/>
-                        <input type="submit" value="Wyślij plik"/>
+                        <input type="submit" value="Send photo"/>
                     </form>
                 </div>
             </div>';
@@ -26,9 +26,9 @@
                 </div>
                 <div class="actuallCheck">
                     <form action="fotobudka.php" method="POST">
-                        <input type="text" name="hashs" placeholder="Wprowadź hashs"/><br/>
-                        <input type="text" name="nazwiskoS" placeholder="Wprowadź nazwisko"/><br/>
-                        <input type="submit" value="Sprawdź"/>
+                        <input type="text" name="hashs" placeholder="Insert code/hash"/><br/>
+                        <input type="text" name="nazwiskoS" placeholder="Insert surname"/><br/>
+                        <input type="submit" value="Check"/>
                     </form>
                 </div>
             </div>

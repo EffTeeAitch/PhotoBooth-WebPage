@@ -35,7 +35,7 @@
         $laczenie = "INSERT INTO laczenie(info_id, users_id) VALUES('".$testInfo['MAX(id)']."', '".$test3User['MAX(id)']."')";      //insert values into 'laczenie' table in db ('laczenie' is just relation in db where every user has photo)
         $db -> query($laczenie);
     }else{
-        echo 'jakis blad';      //error if any exists
+        echo 'random error in file checkInfo.php, sorry';      //error if any exists
         header('Refresh: 3; URL=index.php');
     }
     move_uploaded_file($_FILES['plik']['tmp_name'], $sciezka);      //send photo to folder in path
