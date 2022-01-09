@@ -1,0 +1,33 @@
+:root{
+    --main: rgb(151, 69, 133);
+    --forms: rgb(51, 22, 44);
+    --forms2: rgb(78, 41, 70);
+    --border: rgb(243,17,186);
+    --gambling: rgb(231, 231, 231);
+    --gambling2: #B6C2C0;
+    --gambling3: #8f0A88;
+}
+body{
+    background-color: var(--gambling2);
+    font-family: Verdana;
+    margin: 0;
+    padding: 0;
+}
+.formularze{
+    height: auto;
+    width: 100%;
+    float: left;
+
+    position: fixed;
+}
+.content{
+    background-color: var(--gambling);
+    margin: auto;  
+    margin-top: 15%;
+    width: 50%;
+    border: 3px solid var(--gambling3);
+    padding: 10px;
+}
+.upload, .check{
+    margin-left: 30%;
+}
