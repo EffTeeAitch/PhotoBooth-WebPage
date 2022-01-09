@@ -9,13 +9,13 @@
 </head>
 <body>
     <?php
-        if(($_POST['hashs']!=null) && ($_POST['nazwiskoS']!=null)){//jesli przeslalismy hashs i nazwisko
-            $db = new mysqli('localhost','root','','fotobudka');//polaczenie z baza danych
-            if($row = $db->query('SELECT * FROM info,users,laczenie WHERE lastName = "'.$_POST['nazwiskoS'].'" AND laczenie.info_id = info.id AND laczenie.users_id = users.id')){//zapytanie do bazy danych z odpowiednimi parametrami
-                if($row ->num_rows>0){//jesli zapytanie cos zwraca czyli podalismy poprawny hashs i nazwiso
-                    $row2 = $row->fetch_assoc();//zapisanie do zmiennej danych z bay
+        if(($_POST['hashs']!=null) && ($_POST['nazwiskoS']!=null)){     //if hash and surname was sent
+            $db = new mysqli('localhost','root','','fotobudka');    //db connect
+            if($row = $db->query('SELECT * FROM info,users,laczenie WHERE lastName = "'.$_POST['nazwiskoS'].'" AND laczenie.info_id = info.id AND laczenie.users_id = users.id')){      //query
+                if($row ->num_rows>0){              //if query returns something = correct hash and surname
+                    $row2 = $row->fetch_assoc();        //safe query select into variable
                     if(password_verify($_POST['hashs'],$row2['hashs']) && $row2['lastName']==$_POST['nazwiskoS'] ){
-                        echo 'Obraz użytkownika: '.$row2['firstName'].' '.$row2['lastName'].'<br>';//wyswietlenie danych
+                        echo 'Obraz użytkownika: '.$row2['firstName'].' '.$row2['lastName'].'<br>';     //display data
                         echo 'Wymiary: '.$row2['x'].'x'.$row2['y'].'px<br>';
                         echo 'Wycena: '.$row2['wycena'].'zł<br>';
                         echo 'sciezka: '.$row2['sciezka'].'<br>';
@@ -23,19 +23,19 @@
                         echo '<img src="'.'foto/'.$row2["sciezka"].'" alt="obrazek""/>';
                         
                     }else{
-                        echo 'Nieporawne dane1';//komunikat o zlych danych
+                        echo 'Nieporawne dane1';        //info about incorrect hash or surname
                         header('Refresh: 3; URL=index.php');
                     }
                 }else{
-                    echo 'Nieporawne dane2';//komunikat o zlych danych
+                    echo 'Nieporawne dane2';        //info about no returned data from query
                     header('Refresh: 3; URL=index.php');
                 }
             }else{
-                echo 'Nieporawne dane3';//komunikat o zlych danych
+                echo 'Nieporawne dane3';        //error about no query correctness  
                 header('Refresh: 3; URL=index.php');
             }
         }else{
-            echo 'Nie wprowadziles zadnych danych';//komunikat o zlych danych
+            echo 'Nie wprowadziles zadnych danych';     //error about no data inserted
             header('Refresh: 3; URL=index.php');
         }
     ?>

@@ -10,22 +10,22 @@
 <body>
     <?php
         if (is_uploaded_file($_FILES['plik']['tmp_name'])) {//jesli wysłalismy plik
-            if(($_FILES['plik']['type'] =='image/jpeg')||($_FILES['plik']['type'] =='image/jpg')||($_FILES['plik']['type'] =='image/png')){//jeśli ten plik to zdjęcie
-                if(($_POST['imie'] !=null)&&($_POST['nazwisko'] !=null)){//jeśli przeslalismy imie i nazwisko
+            if(($_FILES['plik']['type'] =='image/jpeg')||($_FILES['plik']['type'] =='image/jpg')||($_FILES['plik']['type'] =='image/png')){     //if thats file is a photo
+                if(($_POST['imie'] !=null)&&($_POST['nazwisko'] !=null)){       //if name and surname was sent
                     require('checkInfo.php');
-                    echo 'Twój osobisty kodzik do zdjęcia: '.$hashs;
-                    echo '<br><a href="index.php">Wróć</a>';
+                    echo 'Your personal code for retrieving that particular photo: '.$hashs;
+                    echo '<br><a href="index.php">Go back</a>';
                 }else{
-                    echo "Nie wprowadziles żadnych danych";
+                    echo "You did not inserted any data";
                     header('Refresh: 3; URL=index.php');
                 }
             }else{
-                echo 'Zły format pliku dopuszczany: png,jpg,jpeg';
+                echo 'Wrong photo extension, acceptable: png,jpg,jpeg';
                 header('Refresh: 3; URL=index.php');
             }
         }
         else{
-            echo 'Błąd przy przesyłaniu danych!';
+            echo 'Error during uploading files!';
             header('Refresh: 3; URL=index.php');
         }
     ?>
